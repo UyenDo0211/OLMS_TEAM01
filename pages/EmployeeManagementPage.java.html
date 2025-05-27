@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>EmployeeManagementPage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+EmployeeManagementPage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pages</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">LogManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">Logger</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebElement</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">EmployeeManagementPage </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s0">private static final </span><span class="s1">Logger logger </span><span class="s2">= </span><span class="s1">LogManager</span><span class="s2">.</span><span class="s1">getLogger</span><span class="s2">(</span><span class="s1">EmployeeManagementPage</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span>
+
+    <span class="s3">// Locators cho các elements trên trang Quản lý nhân viên</span>
+    <span class="s0">private </span><span class="s1">By employeeTable </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s4">&quot;employeeTable&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By searchInput </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s4">&quot;employeeSearch&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By firstEmployeeName </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//table[@id='employeeTable']/tbody/tr[1]/td[1]&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By deleteButtonFirstEmployee </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//table[@id='employeeTable']/tbody/tr[1]/td[last()]/button[contains(text(), 'Xóa')]&quot;</span><span class="s2">);</span>
+
+    <span class="s0">public </span><span class="s1">EmployeeManagementPage</span><span class="s2">(</span><span class="s1">WebDriver driver</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">driver </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">;</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Khởi tạo trang EmployeeManagementPage.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">isEmployeeTableDisplayed</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement tableElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">employeeTable</span><span class="s2">);</span>
+            <span class="s0">boolean </span><span class="s1">isDisplayed </span><span class="s2">= </span><span class="s1">tableElement</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Kiểm tra hiển thị bảng nhân viên: &quot; </span><span class="s2">+ </span><span class="s1">isDisplayed</span><span class="s2">);</span>
+            <span class="s0">return </span><span class="s1">isDisplayed</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">warn</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy bảng nhân viên.&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">enterSearchTerm</span><span class="s2">(</span><span class="s1">String searchTerm</span><span class="s2">) {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement searchInputElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">searchInput</span><span class="s2">);</span>
+            <span class="s1">searchInputElement</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">searchTerm</span><span class="s2">);</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Nhập từ khóa tìm kiếm: &quot; </span><span class="s2">+ </span><span class="s1">searchTerm</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy input tìm kiếm nhân viên.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getFirstEmployeeName</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement nameElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">firstEmployeeName</span><span class="s2">);</span>
+            <span class="s1">String name </span><span class="s2">= </span><span class="s1">nameElement</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Lấy tên nhân viên đầu tiên: &quot; </span><span class="s2">+ </span><span class="s1">name</span><span class="s2">);</span>
+            <span class="s0">return </span><span class="s1">name</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">warn</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy tên nhân viên đầu tiên.&quot;</span><span class="s2">);</span>
+            <span class="s0">return null</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickDeleteFirstEmployeeButton</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement deleteBtn </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">deleteButtonFirstEmployee</span><span class="s2">);</span>
+            <span class="s1">deleteBtn</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Click nút Xóa của nhân viên đầu tiên.&quot;</span><span class="s2">);</span>
+            <span class="s3">// Có thể cần thêm xử lý cho confirm dialog nếu có</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy nút Xóa của nhân viên đầu tiên.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

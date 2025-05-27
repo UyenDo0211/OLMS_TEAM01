@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>LoginPage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+LoginPage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pages</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">LogManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">Logger</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">Assert</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">Duration</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">function</span><span class="s2">.</span><span class="s1">Function</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">LoginPage </span><span class="s2">{</span>
+
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s0">private static final </span><span class="s1">Logger logger </span><span class="s2">= </span><span class="s1">LogManager</span><span class="s2">.</span><span class="s1">getLogger</span><span class="s2">(</span><span class="s1">LoginPage</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span>
+
+    <span class="s0">private </span><span class="s1">By usernameInput </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;username&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By passwordInput </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;password&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By loginButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//button[@type='submit']&quot;</span><span class="s2">);</span>
+
+    <span class="s0">public </span><span class="s1">LoginPage</span><span class="s2">(</span><span class="s1">WebDriver driver</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">driver </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">;</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Khởi tạo trang LoginPage.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">enterUsername</span><span class="s2">(</span><span class="s1">String username</span><span class="s2">) {</span>
+        <span class="s1">WebElement usernameElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">usernameInput</span><span class="s2">);</span>
+        <span class="s1">usernameElement</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">username</span><span class="s2">);</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Nhập tên đăng nhập: &quot; </span><span class="s2">+ </span><span class="s1">username</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">enterPassword</span><span class="s2">(</span><span class="s1">String password</span><span class="s2">) {</span>
+        <span class="s1">WebElement passwordElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">passwordInput</span><span class="s2">);</span>
+        <span class="s1">passwordElement</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">password</span><span class="s2">);</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Nhập mật khẩu: &quot; </span><span class="s2">+ </span><span class="s1">password</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickLoginButton</span><span class="s2">() {</span>
+        <span class="s1">WebElement loginButtonElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">loginButton</span><span class="s2">);</span>
+        <span class="s1">loginButtonElement</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Click nút Đăng nhập.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">isLoginSuccessful</span><span class="s2">() {</span>
+        <span class="s4">// Điều kiện để xác định đăng nhập thành công.</span>
+        <span class="s4">// Bạn cần xác định một element duy nhất xuất hiện sau khi đăng nhập thành công.</span>
+        <span class="s4">// Ví dụ: có thể là một button &quot;Đăng xuất&quot; hoặc một dashboard title.</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s0">return </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[contains(text(), 'Trang chủ')]&quot;</span><span class="s2">)).</span><span class="s1">isDisplayed</span><span class="s2">();</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">warn</span><span class="s2">(</span><span class="s3">&quot;Không tìm thấy element xác nhận đăng nhập thành công.&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getErrorMessage</span><span class="s2">() {</span>
+        <span class="s4">// Tìm kiếm element hiển thị thông báo lỗi đăng nhập (nếu có).</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement errorMessageElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//div[@class='alert alert-danger']&quot;</span><span class="s2">));</span>
+            <span class="s1">String errorMessage </span><span class="s2">= </span><span class="s1">errorMessageElement</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">warn</span><span class="s2">(</span><span class="s3">&quot;Lấy thông báo lỗi: &quot; </span><span class="s2">+ </span><span class="s1">errorMessage</span><span class="s2">);</span>
+            <span class="s0">return </span><span class="s1">errorMessage</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Không tìm thấy thông báo lỗi.&quot;</span><span class="s2">);</span>
+            <span class="s0">return null</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">login</span><span class="s2">(</span><span class="s1">String username</span><span class="s2">, </span><span class="s1">String password</span><span class="s2">) {</span>
+        <span class="s1">enterUsername</span><span class="s2">(</span><span class="s1">username</span><span class="s2">);</span>
+        <span class="s1">enterPassword</span><span class="s2">(</span><span class="s1">password</span><span class="s2">);</span>
+        <span class="s1">clickLoginButton</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

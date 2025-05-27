@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>BaseTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BaseTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">scripts</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">drivers</span><span class="s2">.</span><span class="s1">DriverFactory</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">io</span><span class="s2">.</span><span class="s1">github</span><span class="s2">.</span><span class="s1">bonigarcia</span><span class="s2">.</span><span class="s1">wdm</span><span class="s2">.</span><span class="s1">WebDriverManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">commons</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">FileUtils</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">LogManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">Logger</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">OutputType</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">TakesScreenshot</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">ITestResult</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">annotations</span><span class="s2">.*;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">File</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">IOException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">SimpleDateFormat</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Date</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">concurrent</span><span class="s2">.</span><span class="s1">TimeUnit</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">BaseTest </span><span class="s2">{</span>
+
+    <span class="s0">protected </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s0">protected static final </span><span class="s1">Logger logger </span><span class="s2">= </span><span class="s1">LogManager</span><span class="s2">.</span><span class="s1">getLogger</span><span class="s2">(</span><span class="s1">BaseTest</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span>
+
+    <span class="s1">@BeforeClass</span>
+    <span class="s0">public void </span><span class="s1">setupWebDriver</span><span class="s2">() {</span>
+        <span class="s1">WebDriverManager</span><span class="s2">.</span><span class="s1">chromedriver</span><span class="s2">().</span><span class="s1">setup</span><span class="s2">();</span>
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Khởi tạo WebDriver và mở trình duyệt.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@AfterMethod</span>
+    <span class="s0">public void </span><span class="s1">takeScreenshotOnFailure</span><span class="s2">(</span><span class="s1">ITestResult result</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">result</span><span class="s2">.</span><span class="s1">getStatus</span><span class="s2">() == </span><span class="s1">ITestResult</span><span class="s2">.</span><span class="s1">FAILURE</span><span class="s2">) {</span>
+            <span class="s1">takeScreenshot</span><span class="s2">(</span><span class="s1">result</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">());</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s3">&quot;Test '{}' thất bại, đã chụp ảnh màn hình.&quot;</span><span class="s2">, </span><span class="s1">result</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">());</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">takeScreenshot</span><span class="s2">(</span><span class="s1">String testName</span><span class="s2">) {</span>
+        <span class="s1">TakesScreenshot ts </span><span class="s2">= (</span><span class="s1">TakesScreenshot</span><span class="s2">) </span><span class="s1">driver</span><span class="s2">;</span>
+        <span class="s1">File source </span><span class="s2">= </span><span class="s1">ts</span><span class="s2">.</span><span class="s1">getScreenshotAs</span><span class="s2">(</span><span class="s1">OutputType</span><span class="s2">.</span><span class="s1">FILE</span><span class="s2">);</span>
+        <span class="s1">String timestamp </span><span class="s2">= </span><span class="s0">new </span><span class="s1">SimpleDateFormat</span><span class="s2">(</span><span class="s3">&quot;yyyyMMdd_HHmmss&quot;</span><span class="s2">).</span><span class="s1">format</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Date</span><span class="s2">());</span>
+        <span class="s1">String directory </span><span class="s2">= </span><span class="s1">System</span><span class="s2">.</span><span class="s1">getProperty</span><span class="s2">(</span><span class="s3">&quot;user.dir&quot;</span><span class="s2">) + </span><span class="s3">&quot;/screenshots/&quot;</span><span class="s2">;</span>
+        <span class="s0">new </span><span class="s1">File</span><span class="s2">(</span><span class="s1">directory</span><span class="s2">).</span><span class="s1">mkdirs</span><span class="s2">();</span>
+        <span class="s1">String destination </span><span class="s2">= </span><span class="s1">directory </span><span class="s2">+ </span><span class="s1">testName </span><span class="s2">+ </span><span class="s3">&quot;_&quot; </span><span class="s2">+ </span><span class="s1">timestamp </span><span class="s2">+ </span><span class="s3">&quot;.png&quot;</span><span class="s2">;</span>
+        <span class="s1">File finalDestination </span><span class="s2">= </span><span class="s0">new </span><span class="s1">File</span><span class="s2">(</span><span class="s1">destination</span><span class="s2">);</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">FileUtils</span><span class="s2">.</span><span class="s1">copyFile</span><span class="s2">(</span><span class="s1">source</span><span class="s2">, </span><span class="s1">finalDestination</span><span class="s2">);</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Đã lưu ảnh màn hình vào: &quot; </span><span class="s2">+ </span><span class="s1">destination</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s3">&quot;Lỗi khi chụp ảnh màn hình: &quot; </span><span class="s2">+ </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@AfterClass</span><span class="s2">(</span><span class="s1">alwaysRun </span><span class="s2">= </span><span class="s0">true</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">tearDown</span><span class="s2">() {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">driver </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s3">&quot;Đóng trình duyệt và tắt WebDriver.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

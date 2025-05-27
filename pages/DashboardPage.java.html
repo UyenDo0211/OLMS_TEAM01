@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>DashboardPage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DashboardPage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pages</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">LogManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">apache</span><span class="s2">.</span><span class="s1">logging</span><span class="s2">.</span><span class="s1">log4j</span><span class="s2">.</span><span class="s1">Logger</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebElement</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">DashboardPage </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s0">private static final </span><span class="s1">Logger logger </span><span class="s2">= </span><span class="s1">LogManager</span><span class="s2">.</span><span class="s1">getLogger</span><span class="s2">(</span><span class="s1">DashboardPage</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span>
+
+    <span class="s3">// Locators cho các elements trên trang Dashboard</span>
+    <span class="s0">private </span><span class="s1">By dashboardTitle </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//h1[contains(text(), 'Bảng điều khiển')]&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By addNewEmployeeButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//button[contains(text(), 'Thêm nhân viên')]&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By employeeManagementLink </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//a[contains(text(), 'Quản lý nhân viên')]&quot;</span><span class="s2">);</span>
+    <span class="s0">private </span><span class="s1">By logoutButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//button[contains(text(), 'Đăng xuất')]&quot;</span><span class="s2">);</span>
+
+    <span class="s0">public </span><span class="s1">DashboardPage</span><span class="s2">(</span><span class="s1">WebDriver driver</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">driver </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">;</span>
+        <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Khởi tạo trang DashboardPage.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">isDashboardTitleDisplayed</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement titleElement </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">dashboardTitle</span><span class="s2">);</span>
+            <span class="s0">boolean </span><span class="s1">isDisplayed </span><span class="s2">= </span><span class="s1">titleElement</span><span class="s2">.</span><span class="s1">isDisplayed</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Kiểm tra hiển thị tiêu đề Dashboard: &quot; </span><span class="s2">+ </span><span class="s1">isDisplayed</span><span class="s2">);</span>
+            <span class="s0">return </span><span class="s1">isDisplayed</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">warn</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy tiêu đề Dashboard.&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickAddNewEmployeeButton</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement addButton </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">addNewEmployeeButton</span><span class="s2">);</span>
+            <span class="s1">addButton</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Click nút Thêm mới nhân viên.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy nút Thêm mới nhân viên.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickEmployeeManagementLink</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement manageLink </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">employeeManagementLink</span><span class="s2">);</span>
+            <span class="s1">manageLink</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Click link Quản lý nhân viên.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy link Quản lý nhân viên.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickLogoutButton</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">WebElement logoutBtn </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">logoutButton</span><span class="s2">);</span>
+            <span class="s1">logoutBtn</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">info</span><span class="s2">(</span><span class="s4">&quot;Click nút Đăng xuất.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">NoSuchElementException e</span><span class="s2">) {</span>
+            <span class="s1">logger</span><span class="s2">.</span><span class="s1">error</span><span class="s2">(</span><span class="s4">&quot;Không tìm thấy nút Đăng xuất.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

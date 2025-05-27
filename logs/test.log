@@ -1,0 +1,30 @@
+2025-05-15 23:28:00.827 [main] INFO  scripts.BaseTest - Khởi tạo WebDriver và mở trình duyệt.
+2025-05-15 23:28:05.473 [main] INFO  pages.LoginPage - Khởi tạo trang LoginPage.
+2025-05-15 23:28:05.473 [main] INFO  scripts.LoginTest - Mở trang đăng nhập: https://olms.codedao.io.vn/login
+2025-05-15 23:28:05.634 [main] INFO  scripts.BaseTest - Đã lưu ảnh màn hình vào: C:\Users\OS\BTCK01/screenshots/testSuccessfulLogin_20250515_232805.png
+2025-05-15 23:28:05.635 [main] ERROR scripts.BaseTest - Test 'testSuccessfulLogin' thất bại, đã chụp ảnh màn hình.
+2025-05-15 23:28:05.755 [main] INFO  scripts.BaseTest - Đóng trình duyệt và tắt WebDriver.
+2025-05-17 13:42:41.382 [main] INFO  scripts.BaseTest - Khởi tạo WebDriver và mở trình duyệt.
+2025-05-17 13:42:45.478 [main] INFO  pages.LoginPage - Khởi tạo trang LoginPage.
+2025-05-17 13:42:45.478 [main] INFO  scripts.LoginTest - Mở trang đăng nhập: https://olms.codedao.io.vn/login
+2025-05-17 13:42:45.718 [main] INFO  scripts.BaseTest - Đã lưu ảnh màn hình vào: C:\Users\OS\BTCK01/screenshots/testSuccessfulLogin_20250517_134245.png
+2025-05-17 13:42:45.719 [main] ERROR scripts.BaseTest - Test 'testSuccessfulLogin' thất bại, đã chụp ảnh màn hình.
+2025-05-17 13:42:46.060 [main] INFO  scripts.BaseTest - Đóng trình duyệt và tắt WebDriver.
+2025-05-17 14:02:38.951 [main] INFO  scripts.BaseTest - Khởi tạo WebDriver và mở trình duyệt.
+2025-05-17 14:02:42.904 [main] INFO  pages.LoginPage - Khởi tạo trang LoginPage.
+2025-05-17 14:02:42.904 [main] INFO  scripts.LoginTest - Mở trang đăng nhập: https://olms.codedao.io.vn/login
+2025-05-17 14:02:43.054 [main] INFO  scripts.BaseTest - Đã lưu ảnh màn hình vào: C:\Users\OS\BTCK01/screenshots/testSuccessfulLogin_20250517_140243.png
+2025-05-17 14:02:43.054 [main] ERROR scripts.BaseTest - Test 'testSuccessfulLogin' thất bại, đã chụp ảnh màn hình.
+2025-05-17 14:02:43.187 [main] INFO  scripts.BaseTest - Đóng trình duyệt và tắt WebDriver.
+2025-05-17 14:04:29.332 [main] INFO  scripts.BaseTest - Khởi tạo WebDriver và mở trình duyệt.
+2025-05-17 14:04:39.218 [main] INFO  pages.LoginPage - Khởi tạo trang LoginPage.
+2025-05-17 14:04:39.218 [main] INFO  scripts.LoginTest - Mở trang đăng nhập: https://olms.codedao.io.vn/login
+2025-05-17 14:04:39.379 [main] INFO  scripts.BaseTest - Đã lưu ảnh màn hình vào: C:\Users\OS\BTCK01/screenshots/testSuccessfulLogin_20250517_140439.png
+2025-05-17 14:04:39.379 [main] ERROR scripts.BaseTest - Test 'testSuccessfulLogin' thất bại, đã chụp ảnh màn hình.
+2025-05-17 14:04:39.508 [main] INFO  scripts.BaseTest - Đóng trình duyệt và tắt WebDriver.
+2025-05-27 18:28:51.010 [main] INFO  scripts.BaseTest - Khởi tạo WebDriver và mở trình duyệt.
+2025-05-27 18:28:52.944 [main] INFO  pages.LoginPage - Khởi tạo trang LoginPage.
+2025-05-27 18:28:52.944 [main] INFO  scripts.LoginTest - Mở trang đăng nhập: https://olms.codedao.io.vn/login
+2025-05-27 18:28:55.900 [main] INFO  scripts.BaseTest - Đã lưu ảnh màn hình vào: C:\Users\OS\BTCK01/screenshots/testSuccessfulLogin_20250527_182855.png
+2025-05-27 18:28:55.902 [main] ERROR scripts.BaseTest - Test 'testSuccessfulLogin' thất bại, đã chụp ảnh màn hình.
+2025-05-27 18:28:56.302 [main] INFO  scripts.BaseTest - Đóng trình duyệt và tắt WebDriver.
