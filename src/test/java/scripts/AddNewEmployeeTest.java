@@ -27,8 +27,6 @@ public class AddNewEmployeeTest extends BaseTest {
         loginPage.login("testadmin", "test1234");
         Assert.assertTrue(dashboardPage.isDashboardTitleDisplayed(), "Đăng nhập không thành công hoặc không chuyển đến Dashboard.");
         dashboardPage.clickAddNewEmployeeButton();
-        // Thêm một Assert để chắc chắn bạn đã ở trang Thêm mới nhân viên (dựa trên URL hoặc một element duy nhất)
-        // Ví dụ: Assert.assertTrue(driver.getCurrentUrl().contains("/employee/add"), "Không chuyển đến trang Thêm mới nhân viên.");
         logger.info("Đã điều hướng đến trang Thêm mới nhân viên.");
     }
 
@@ -48,7 +46,6 @@ public class AddNewEmployeeTest extends BaseTest {
         Assert.assertTrue(addNewEmployeePage.isSuccessMessageDisplayed(), "Không thấy thông báo thêm nhân viên thành công.");
         logger.info("Đã thêm nhân viên thành công với đầy đủ thông tin.");
 
-        // Bạn có thể thêm các bước kiểm tra khác ở đây, ví dụ: kiểm tra xem nhân viên mới có xuất hiện trong danh sách quản lý hay không.
     }
 
     @Test
