@@ -29,24 +29,18 @@ public class DashboardTest extends BaseTest {
     @Test
     public void testNavigateToAddNewEmployeePage() {
         dashboardPage.clickAddNewEmployeeButton();
-        // Ở đây bạn cần thêm Assert để kiểm tra xem bạn đã chuyển đến trang Thêm mới nhân viên hay chưa
-        // Ví dụ: Assert.assertTrue(driver.getCurrentUrl().contains("/employee/add"), "Không chuyển đến trang Thêm mới nhân viên.");
         logger.info("Đã click nút Thêm mới nhân viên.");
     }
 
     @Test
     public void testNavigateToEmployeeManagementPage() {
         dashboardPage.clickEmployeeManagementLink();
-        // Ở đây bạn cần thêm Assert để kiểm tra xem bạn đã chuyển đến trang Quản lý nhân viên hay chưa
-        // Ví dụ: Assert.assertTrue(driver.getCurrentUrl().contains("/employee/manage"), "Không chuyển đến trang Quản lý nhân viên.");
         logger.info("Đã click link Quản lý nhân viên.");
     }
 
     @Test
     public void testLogoutFromDashboard() {
         dashboardPage.clickLogoutButton();
-        // Ở đây bạn cần thêm Assert để kiểm tra xem bạn đã quay lại trang đăng nhập hay chưa
-        // Ví dụ: Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "Không đăng xuất thành công.");
         logger.info("Đã click nút Đăng xuất.");
     }
 }
